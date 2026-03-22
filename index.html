@@ -1,279 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Happy Birthday My Love</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-image: url('assets/romantic-sunset.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #ff4081;
-      margin-top: 50px;
-    }
-
-    .romantic-text {
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #ffd1e1;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    #birthday-box {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 6rem;
-      cursor: pointer;
-      z-index: 1000;
-      transition: transform 0.5s ease;
-    }
-
-    #birthday-box:hover {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    #message-wrapper {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1001;
-      display: none;
-    }
-
-    #birthday-message {
-      background: rgba(255, 255, 255, 0.95);
-      color: #ff4081;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      font-family: 'Arial', sans-serif;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      animation: popIn 2s ease-out;
-    }
-
-    #birthday-message h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-
-    #birthday-message p {
-      font-size: 1.2rem;
-      color: #333;
-    }
-
-    #delayed-line,
-    #auto-note,
-    #heart {
-      display: none;
-    }
-
-    #delayed-line {
-      color: #333;
-      font-size: 1.2rem;
-      margin-top: 15px;
-    }
-
-    #auto-note {
-      font-style: italic;
-      color: #fff;
-      margin-top: 20px;
-    }
-
-    #heart {
-      font-size: 3rem;
-      margin-top: 20px;
-    }
-
-    button {
-      background: linear-gradient(45deg, #ff4081, #ff80ab);
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 20px;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    #love-note {
-      display: none;
-      max-width: 600px;
-      margin: 20px auto;
-      color: #fff;
-      font-style: italic;
-    }
-
-    a.credit {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 5px 10px;
-      border-radius: 5px;
-      color: white;
-      font-size: 0.8rem;
-      text-decoration: none;
-    }
-
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background-color: pink;
-      opacity: 0.8;
-      animation: fall 3s linear infinite;
-      z-index: 999;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes popIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      60% {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-      80% {
-        transform: scale(0.98);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>💖 Happy Birthday, meine Liebe 💖</h1>
-
-  <p class="romantic-text">
-    Möge Allah dir Frieden, Glück und ein wunderschönes neues Lebensjahr schenken.
-    Ich danke Allah für dich – du bist mein größter Segen. ❤️✨
-  </p>
-
-  <!-- 🎁 Birthday Box -->
-  <div id="birthday-box" onclick="openBirthdayBox()">🎁</div>
-
-  <!-- 🎉 Message and Sync visuals -->
-  <div id="message-wrapper">
-    <div id="birthday-message">
-      <h2>🎉 Happy Birthday, meine Liebe! 🎉</h2>
-      <p>
-        Du bist das schönste Geschenk in meinem Leben. <br />
-        Ich liebe dich unendlich. ❤️
-      </p>
-      <img src="assets/cake.gif" style="width: 200px; margin-top: 20px;" alt="Cake" />
-
-      <p id="delayed-line">Und ich werde dich für immer lieben. 💞</p>
-      <p id="auto-note">Du bist mein Herz, mein Zuhause, mein Licht.</p>
-      <div id="heart">❤️</div>
-    </div>
-  </div>
-
-  <!-- 💌 Love Note Button -->
-  <button onclick="toggleNote()">💌 Für dich</button>
-  <p id="love-note">
-    Ich danke Allah jeden Tag dafür, dass du in meinem Leben bist. <br />
-    Du bist mein Zuhause, mein Ruhepol und mein größtes Geschenk. <br />
-    Ich verspreche, dich jeden Tag aufs Neue zu lieben. 🌙❤️
-  </p>
-
-  <!-- 🎵 Audio -->
-  <audio id="birthday-audio" src="assets/happy-birthday-piano.mp3" preload="auto"></audio>
-  <audio id="voice-message" src="assets/voice-message.mp3" preload="auto"></audio>
-
-  <!-- 📸 Credit -->
-  <a class="credit" href="https://pngtree.com/freebackground/majestic-view-of-kaaba-in-mecca-during-sunset_15990382.html" target="_blank">
-    Background: pngtree.com
-  </a>
-
-  <script>
-    function openBirthdayBox() {
-    document.getElementById('message-wrapper').style.display = 'block';
-    const piano = document.getElementById('birthday-audio');
-    const voice = document.getElementById('voice-message');
-
-    piano.currentTime = 0;
-    voice.currentTime = 0;
-
-    piano.play();
-
-    // Confetti at 3s
-    setTimeout(() => createConfetti(), 3000);
-
-    // Extra romantic line at 6s
-    setTimeout(() => {
-        document.getElementById('delayed-line').style.display = 'block';
-    }, 6000);
-
-    // Note auto-appears at 12s
-    setTimeout(() => {
-        document.getElementById('auto-note').style.display = 'block';
-    }, 12000);
-
-    // Heart at 25s
-    setTimeout(() => {
-        document.getElementById('heart').style.display = 'block';
-    }, 25000);
-
-    // ▶️ Voice message at 44s (when piano ends)
-    setTimeout(() => {
-        voice.play();
-    }, 44000);
-
-    // Hide message after full sequence (piano + voice = ~56s)
-    setTimeout(() => {
-        document.getElementById('message-wrapper').style.display = 'none';
-        document.getElementById('delayed-line').style.display = 'none';
-        document.getElementById('auto-note').style.display = 'none';
-        document.getElementById('heart').style.display = 'none';
-    }, 56000);
-}
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Erim & Besa Hochzeit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <!-- Text & Button entfernt -->
+          </div>
+          <div class="lily-wrapper" aria-label="Lily Animation">
+            <object class="lily-art" type="image/svg+xml" data="assets/lily.svg"></object>
+          </div>
+        </div>
+      </section>
 
 
-    function toggleNote() {
-      const note = document.getElementById('love-note');
-      note.style.display = note.style.display === 'none' ? 'block' : 'none';
-    }
+      
+    </main>
 
-    function createConfetti() {
-      for (let i = 0; i < 50; i++) {
-        let confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.top = `-${Math.random() * 20}px`;
-        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
-        confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 4000);
-      }
-    }
-  </script>
-</body>
+  
+  </body>
 </html>
