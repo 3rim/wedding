@@ -1,6 +1,6 @@
 :root {
   --bg: #fffaf7;
-  --primary: #b43d79;
+  --primary: #111011;
   --accent: #f08a5d;
   --dark: #2d2f36;
   --muted: #6f6f80;
@@ -17,7 +17,7 @@ html {
 body {
   margin: 0;
   font-family: "Inter", "Segoe UI", Roboto, sans-serif;
-  color: var(--dark);
+  color: #000;
   background: #fffaf7;
   line-height: 1.5;
   position: relative;
@@ -87,7 +87,7 @@ nav a {
   position: absolute;
   inset: 0;
   background: url("../assets/kranz-with-title-svg.svg") center center / contain no-repeat;
-  opacity: 0;
+  opacity: 1;
   filter: blur(0.6px);
   transform-origin: center;
   animation: backgroundDrift 45s linear infinite, backgroundPulse 8s ease-in-out infinite, floatPattern 12s ease-in-out infinite, fadeInHeroBg 2.3s ease-out forwards;
@@ -278,4 +278,358 @@ section h2 {
   height: auto;
   max-height: 400px;
   object-fit: contain;
+}
+
+.details {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.details h2,
+.rsvp-section h2 {
+  margin-bottom: 0.6rem;
+  color: var(--primary);
+}
+
+.details .card {
+  text-align: left;
+}
+
+.rsvp-section {
+  padding: 2rem 1rem 3rem;
+  background: rgba(255, 248, 242, 0.86);
+  text-align: center;
+}
+
+.rsvp-section p {
+  margin: 0.5rem auto 1.2rem;
+  max-width: 620px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 44px;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 9px 18px rgba(180, 61, 121, 0.35);
+}
+
+@media (max-width: 780px) {
+  .hero {
+    padding: 1.5rem 0.75rem;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 9vw, 2.8rem);
+  }
+
+  .hero p,
+  .hero .intro-text,
+  .details p,
+  .rsvp-section p {
+    font-size: 1rem;
+  }
+
+  .hero .lily-wrapper {
+    max-width: 90vw;
+  }
+
+  .details .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .opening-seal {
+    width: min(42vw, 180px);
+    height: min(42vw, 180px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: clamp(1.7rem, 10vw, 2.4rem);
+  }
+
+  .hero p,
+  .details p,
+  .rsvp-section p {
+    font-size: 0.96rem;
+  }
+}
+
+/* —— Screenreader-only —— */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-main {
+  outline: none;
+  /* Erst nach Öffnen sichtbar einblenden (Overlay liegt darüber) */
+  opacity: 0;
+  transition: opacity 1.35s ease 0.45s;
+}
+
+body.site-revealed .site-main {
+  opacity: 1;
+}
+
+.site-main:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.site-main:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* —— Vollbild-Einladung: zwei Klappen + Siegel (Referenz: gold/beige Karte) —— */
+.opening-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.opening-overlay.is-done {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.opening-flap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(
+    135deg,
+    #e9e0d6 0%,
+    #ddd2c6 40%,
+    #d4c8bb 100%
+  );
+  transition: transform 1.35s cubic-bezier(0.45, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.opening-flap--left {
+  left: 0;
+  /* Etwas breiter = liegt optisch über der rechten Hälfte */
+  width: calc(50% + 10px);
+  z-index: 2;
+  box-shadow:
+    inset -8px 0 20px rgba(45, 47, 54, 0.08),
+    /* Schlagschatten nach rechts auf die untere Klappe */
+    14px 0 32px rgba(35, 30, 26, 0.28),
+    6px 0 14px rgba(25, 22, 18, 0.22);
+  border-right: 1px solid rgba(120, 100, 72, 0.35);
+}
+
+.opening-flap--right {
+  right: 0;
+  z-index: 1;
+  /* Dunkler Streifen an der Naht: wie Schatten der linken Lage */
+  box-shadow: inset 28px 0 48px rgba(32, 28, 24, 0.22);
+  border-left: 1px solid rgba(90, 78, 58, 0.2);
+}
+
+.opening-overlay.is-open .opening-flap--left {
+  transform: translateX(-100%);
+}
+
+.opening-overlay.is-open .opening-flap--right {
+  transform: translateX(100%);
+}
+
+/* Dezente goldene Ranken (näher an der Referenz als reines Flächenbeige) */
+.opening-flap__botanical {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background-repeat: no-repeat;
+  background-size: 120% 120%;
+}
+
+.opening-flap__botanical--left {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='none' stroke='%23b8943d' stroke-width='0.85'%3E%3Cpath d='M20 380 Q 60 320 40 260 Q 25 200 55 140 Q 80 90 30 40'/%3E%3Cpath d='M45 360 Q 90 300 70 230 Q 55 170 95 115 Q 120 70 75 25'/%3E%3Cpath d='M10 300 Q 50 250 35 190'/%3E%3Ccircle cx='38' cy='175' r='3' fill='%23b8943d' stroke='none'/%3E%3Ccircle cx='72' cy='95' r='2.5' fill='%23b8943d' stroke='none'/%3E%3C/svg%3E");
+  background-position: -5% 100%;
+}
+
+.opening-flap__botanical--right {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='none' stroke='%23b8943d' stroke-width='0.85'%3E%3Cpath d='M180 380 Q 140 320 160 260 Q 175 200 145 140 Q 120 90 170 40'/%3E%3Cpath d='M155 360 Q 110 300 130 230 Q 145 170 105 115 Q 80 70 125 25'/%3E%3Cpath d='M190 300 Q 150 250 165 190'/%3E%3Ccircle cx='162' cy='175' r='3' fill='%23b8943d' stroke='none'/%3E%3Ccircle cx='128' cy='95' r='2.5' fill='%23b8943d' stroke='none'/%3E%3C/svg%3E");
+  background-position: 105% 100%;
+}
+
+.opening-hint {
+  position: absolute;
+  bottom: clamp(1.25rem, 5vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b635a;
+  letter-spacing: 0.02em;
+  z-index: 5;
+  transition: opacity 0.35s ease;
+}
+
+.opening-overlay.is-open .opening-hint {
+  opacity: 0;
+}
+
+/* Siegel: PNG aus assets (z. B. wachssiegel.png) — weniger CSS, gleicher Look */
+.opening-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(70px, 18vw, 110px);
+  height: clamp(70px, 18vw, 110px);
+  max-width: 120px;
+  max-height: 120px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 780px) {
+  .opening-seal {
+    width: clamp(110px, 36vw, 160px);
+    height: clamp(110px, 36vw, 160px);
+  }
+}
+
+@media (max-width: 480px) {
+  .opening-seal {
+    width: clamp(95px, 42vw, 140px);
+    height: clamp(95px, 42vw, 140px);
+  }
+}
+
+.opening-seal__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 28px rgba(18, 10, 6, 0.42));
+  /* Weißer PNG-Hintergrund: auf den Klappen weicher einbetten (bei echter Transparenz: Zeile auskommentieren) */
+  mix-blend-mode: multiply;
+}
+
+.opening-seal:hover:not(:disabled) {
+  transform: scale(1.04);
+}
+
+.opening-seal:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.opening-seal:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.opening-seal__initials {
+  position: relative;
+  z-index: 1;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.45rem, 5.5vw, 2rem);
+  color: #4a3618;
+  text-shadow:
+    -0.5px -0.5px 0 rgba(255, 248, 230, 0.5),
+    0.5px 0.5px 0 rgba(25, 14, 4, 0.4),
+    2px 3px 6px rgba(8, 4, 2, 0.45);
+  display: block;
+  line-height: 1;
+  margin-top: 2px;
+  mix-blend-mode: normal;
+}
+
+.opening-overlay.is-open .opening-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-flap,
+  .opening-seal,
+  .opening-hint {
+    transition-duration: 0.01ms !important;
+  }
+
+  .site-main {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .opening-overlay.is-open .opening-flap--left {
+    transform: translateX(-100%);
+  }
+
+  .opening-overlay.is-open .opening-flap--right {
+    transform: translateX(100%);
+  }
+
+  .opening-overlay.is-open .opening-seal {
+    opacity: 0;
+  }
+}
+
+.map-wrapper {
+  max-width: 900px;
+  margin: 1rem auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(15, 14, 23, 0.12);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 320px; /* ~ gute Höhe für mobile Geräte */
+  min-height: 240px;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .map-wrapper iframe {
+    height: 260px;
+  }
 }
