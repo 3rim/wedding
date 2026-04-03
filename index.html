@@ -8,23 +8,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css" />
+    <script src="scripts/envelope-animation.js" defer></script>
   </head>
+  
   <body>
     <div
-      id="opening-overlay"
-      class="opening-overlay"
+      id="invitation-envelope"
+      class="invitation-envelope"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="opening-overlay-title"
+      aria-labelledby="invitation-envelope-title"
     >
-      <h2 id="opening-overlay-title" class="visually-hidden">
-        Einladung — zum Öffnen das Siegel antippen
-      </h2>
-      <div class="opening-flap opening-flap--left" aria-hidden="true">
-        <span class="opening-flap__botanical opening-flap__botanical--left"></span>
-      </div>
-      <div class="opening-flap opening-flap--right" aria-hidden="true">
-        <span class="opening-flap__botanical opening-flap__botanical--right"></span>
+  
+      <div class="opening-flap opening-flap--top" aria-hidden="true">
+        <span class="invitation-envelope__botanical invitation-envelope__botanical--left"></span>
       </div>
       <button
         type="button"
@@ -41,21 +38,21 @@
           decoding="async"
         />
       </button>
+      <div class="opening-flap opening-flap--bottom" aria-hidden="true">
+        <span class="invitation-envelope__botanical invitation-envelope__botanical--right"></span>
+      </div>
     </div>
 
     <main id="main" class="site-main" tabindex="-1" aria-label="Einladung">
-      <section class="hero" id="hero">
-        <div class="hero-inner">
-          <div class="hero-content">
-           <!-- <h1>Erim &amp; Besa</h1>-->
-            <p class="intro-text">Wir laden dich herzlich ein, unseren besonderen Tag mit uns zu feiern.</p>
-            <p>17. August 2026 • 15:00 Uhr • Schlosspark Kulisse</p>
+      <section class="hero-container" id="hero-container">
+        <div class="swan-section" id="swan-section">
+          <!-- Swan-Hintergrund wird per CSS gesetzt -->
+        </div>
+        
+        <div class="invitation-section" id="invitation-section">
+          <div class="invitation-content">
+            <img src="assets/Hochzeitsladung.svg" alt="Hochzeitseinladung" class="kranz-with-title-svg">
           </div>
-          <!-- Lily Animation 
-          <div class="lily-wrapper" aria-label="Lily Animation">
-            <object class="lily-art" type="image/svg+xml" data="assets/lily.svg"></object>
-          </div>
-          -->
         </div>
       </section>
 
@@ -96,6 +93,5 @@
       </footer>
     </main>
 
-    <script src="scripts/opening-overlay.js" defer></script>
-  </body>
+    </body>
 </html>
