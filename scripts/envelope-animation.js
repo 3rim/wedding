@@ -18,23 +18,23 @@ document.addEventListener('DOMContentLoaded', function() {
       envelope.classList.add('is-done');
       console.log('Envelope fadet aus');
       
-      // Second: conditional render - hide swan, show invitation
+      // Second: simultaneous - hide swan and show invitation
+      const swanSection = document.querySelector('.swan-section');
+      const invitationSection = document.querySelector('.invitation-section');
+      
+      // Hide swan (same time as envelope)
+      if (swanSection) {
+        swanSection.classList.add('hidden');
+      }
+      
+      // Show invitation immediately after swan starts fading
       setTimeout(() => {
-        const swanSection = document.querySelector('.swan-section');
-        const invitationSection = document.querySelector('.invitation-section');
-        
-        // Hide swan
-        if (swanSection) {
-          swanSection.classList.add('hidden');
-        }
-        
-        // Show invitation
         if (invitationSection) {
           invitationSection.classList.add('show');
         }
-        
-        console.log('Conditional render: Swan versteckt, Einladung sichtbar');
-      }, 2500); // Wait for envelope to fade out
+        console.log('Einladung erscheint während Swan und Envelope verblassen');
+      }, 100); // Small delay for smooth transition
+      
     }, 1200); // Wait for flap animation to complete
   });
   
