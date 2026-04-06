@@ -192,15 +192,10 @@ h1, .pill {
 }
 
 .kranz-with-title-svg {
-  opacity: 1;
-  transform: none;
-  position: static;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100vw;
-  max-height: 100vh;
-  z-index: auto;
-  transition: all 1.5s ease-out;
+  width: 100%;
+  max-width: 700px;   /* begrenzt Größe auf Desktop */
+  height: auto;
+  max-height: 80vh;   /* verhindert Übergröße */
   object-fit: contain;
 }
 
@@ -703,4 +698,134 @@ body .invitation-envelope.is-done {
   .scroll-down .scroll-text {
     font-size: 1rem;
   }
+}
+
+
+/* Details Section zentrieren */
+.details {
+  text-align: center; /* Zentriert den H2-Titel */
+  padding: 4rem 1rem; /* Abstand oben/unten und horizontal */
+  max-width: 1200px; /* Optional: begrenzt Breite auf großen Bildschirmen */
+  margin: 0 auto; /* zentriert die Section horizontal */
+}
+
+/* Grid für die Karten */
+.details .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem; /* Abstand zwischen den Cards */
+  justify-items: center; /* Zentriert die einzelnen Cards */
+  margin-top: 2rem;
+}
+
+/* Einzelne Cards */
+.details .card {
+  background-color: #fff; /* Optional: Hintergrundfarbe */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 350px; /* Limit für große Bildschirme */
+  text-align: center;
+}
+
+/* Überschriften innerhalb der Cards */
+.details .card h3 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+}
+
+/* Paragraphen innerhalb der Cards */
+.details .card p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Optional: responsive Anpassung für kleinere Bildschirme */
+@media (max-width: 600px) {
+  .details {
+    padding: 2rem 1rem;
+  }
+
+  .details .grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Location Section zentrieren */
+.location {
+  text-align: center; /* Titel zentrieren */
+  padding: 4rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Map Wrapper zentrieren */
+.location .map-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center; /* Zentriert das iframe horizontal */
+}
+
+/* Optional: iframe responsive machen */
+.location iframe {
+  width: 100%;
+  max-width: 600px; /* Limit für Desktop */
+  height: 340px;
+  border: 0;
+  border-radius: 12px; /* optional für schöne Optik */
+}
+
+/* Überschrift */
+.location h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.location p {
+  font-family: 'Inter', sans-serif;
+  color: #555;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 600px) {
+  .location {
+    padding: 2rem 1rem;
+  }
+
+  .location iframe {
+    height: 240px;
+  }
+
+  .location p {
+    font-size: 1rem;
+  }
+}
+
+/* Details-Sektion */
+.details p, .details .card h3, .location p {
+  font-family: 'Inter', sans-serif; /* oder Lora/Merriweather */
+  font-weight: 400;                 /* normal */
+  font-size: 0.9rem;                /* Schriftgröße kleiner */
+  font-style: italic;               /* kursiv */
+  color: #333;                      /* Textfarbe */
+  text-align: center;               /* optional zentrieren */
+}
+
+/* Optional: Überschrift etwas kleiner und elegant */
+.details h2, .location h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.5rem; 
+  font-style: normal; /* Überschrift normal */
+  text-align: center;
 }
