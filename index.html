@@ -12,51 +12,46 @@
   </head>
   
   <body>
-    <div style="position:absolute; width:0; height:0; overflow:hidden;">
-  <iframe 
-    src="https://www.youtube.com/embed/LzGX8t_Hijk?autoplay=1&controls=0&mute=0&loop=1&playlist=LzGX8t_Hijk&start=2"
-    frameborder="0"
-    allow="autoplay">
-  </iframe>
-</div>
-    <div
-      id="invitation-envelope"
-      class="invitation-envelope"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="invitation-envelope-title"
-    >
-  
-      <div class="opening-flap opening-flap--top" aria-hidden="true">
-        <span class="invitation-envelope__botanical invitation-envelope__botanical--left"></span>
+    <!-- Intro Container: Envelope + Swan -->
+    <div class="intro-container" id="intro-container">
+      <div class="swan-section" id="swan-section">
+        <!-- Swan-Hintergrund wird per CSS gesetzt -->
       </div>
-      <button
-        type="button"
-        class="opening-seal"
-        id="opening-seal"
-        aria-label="Siegel antippen, um die Einladung zu öffnen"
+      
+      <div
+        id="invitation-envelope"
+        class="invitation-envelope"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="invitation-envelope-title"
       >
-        <img
-          class="opening-seal__img"
-          src="assets/wachsiegel2.png"
-          alt=""
-          width="150"
-          height="150"
-          decoding="async"
-        />
-      </button>
-      <div class="opening-flap opening-flap--bottom" aria-hidden="true">
-        <span class="invitation-envelope__botanical invitation-envelope__botanical--right"></span>
+        <div class="opening-flap opening-flap--top" aria-hidden="true">
+          <span class="invitation-envelope__botanical invitation-envelope__botanical--left"></span>
+        </div>
+        <button
+          type="button"
+          class="opening-seal"
+          id="opening-seal"
+          aria-label="Siegel antippen, um die Einladung zu öffnen"
+        >
+          <img
+            class="opening-seal__img"
+            src="assets/wachsiegel2.png"
+            alt=""
+            width="150"
+            height="150"
+            decoding="async"
+          />
+        </button>
+        <div class="opening-flap opening-flap--bottom" aria-hidden="true">
+          <span class="invitation-envelope__botanical invitation-envelope__botanical--right"></span>
+        </div>
       </div>
     </div>
 
-    <main id="main" class="site-main" tabindex="-1" aria-label="Einladung">
+    <!-- Main Content: Wird nach Klick sichtbar -->
+    <main id="main" class="site-main" tabindex="-1" aria-label="Einladung" style="display: none;">
       <section class="hero-container" id="hero-container">
-        <div class="swan-section" id="swan-section">
-          <!-- Swan-Hintergrund wird per CSS gesetzt -->
-        </div>
-       
-        
         <div class="invitation-section" id="invitation-section">
           <div class="invitation-content">
             <img src="assets/Hochzeitsladung.svg" alt="Hochzeitseinladung" class="kranz-with-title-svg">
@@ -68,7 +63,7 @@
             <span class="arrow arrow1"></span>
             <span class="arrow arrow2"></span>
           </div>
-       </div>
+        </div>
       </section>
 
       <section class="details" id="details">

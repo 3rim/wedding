@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const envelope = document.getElementById('invitation-envelope');
   const seal = document.getElementById('opening-seal');
+  const introContainer = document.getElementById('intro-container');
+  const mainContent = document.getElementById('main');
   
   if (!envelope || !seal) return;
   
@@ -18,21 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
       envelope.classList.add('is-done');
       console.log('Envelope fadet aus');
       
-      // Second: simultaneous - hide swan and show invitation
-      const swanSection = document.querySelector('.swan-section');
-      const invitationSection = document.querySelector('.invitation-section');
-      
-      // Hide swan (same time as envelope)
-      if (swanSection) {
-        swanSection.classList.add('hidden');
-      }
-      
-      // Show invitation immediately after swan starts fading
+      // Second: hide intro container and show main content
       setTimeout(() => {
+        // Hide intro container completely
+        if (introContainer) {
+          introContainer.classList.add('hidden');
+        }
+        
+        // Show main content
+        if (mainContent) {
+          mainContent.style.display = 'block';
+        }
+        
+        // Show invitation section
+        const invitationSection = document.getElementById('invitation-section');
         if (invitationSection) {
           invitationSection.classList.add('show');
+          console.log('Invitation-section show Klasse hinzugefügt');
         }
-        console.log('Einladung erscheint während Swan und Envelope verblassen');
+        
+        console.log('Intro versteckt, Main Content erscheint');
       }, 100); // Small delay for smooth transition
       
     }, 1200); // Wait for flap animation to complete
