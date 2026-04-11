@@ -68,7 +68,6 @@ h1, .pill {
   position: relative;
   width: 100vw;
   height: 100vh;
-  height: 100dvh;
   overflow: hidden;
 }
 
@@ -137,12 +136,65 @@ h1, .pill {
   visibility: visible;
 }
 
-.kranz-with-title-svg {
+.invitation-content {
   width: 100%;
-  max-width: 700px;   /* begrenzt Größe auf Desktop */
-  height: auto;
-  max-height: 80vh;   /* verhindert Übergröße */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2vh;
+  position: relative;
+}
+
+.kranz-with-title-svg {
+  width: auto;
+  max-width: 95%;
+  height: 95%;
   object-fit: contain;
+  object-position: center;
+}
+
+.invitation-text {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 55%;
+  z-index: 10;
+}
+
+.couple-names {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.invitation-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #555;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.wedding-date {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 500;
+  margin: 0 0 0.3rem 0;
+  color: var(--primary);
+}
+
+.wedding-time,
+.wedding-location {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  margin: 0 0 0.2rem 0;
+  color: #666;
 }
 
 section {
