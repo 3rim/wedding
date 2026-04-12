@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('Invitation-section show Klasse hinzugefügt');
         }
         
+        // Starte Audio (Swan Lake bis 0:44)
+        const audio = document.getElementById('swan-audio');
+        if (audio) {
+          audio.currentTime = 0;
+          audio.volume = 0.3; // 30% Lautstärke
+          audio.play().catch(e => console.log('Audio play failed:', e));
+          
+          // Stoppe bei 0:44 (44 Sekunden)
+          audio.addEventListener('timeupdate', function stopAt44() {
+            if (audio.currentTime >= 44) {
+              audio.pause();
+              audio.removeEventListener('timeupdate', stopAt44);
+            }
+          });
+        }
+        
         console.log('Intro versteckt, Main Content erscheint');
       }, 100); // Small delay for smooth transition
       

@@ -51,12 +51,17 @@
 
     <!-- Main Content: Wird nach Klick sichtbar -->
     <main id="main" class="site-main" tabindex="-1" aria-label="Einladung" style="display: none;">
+      <!-- Audio: Swan Lake (spielt nach Envelope-Öffnen) -->
+      <audio id="swan-audio" preload="auto">
+        <source src="assets/Tchaikovsky-Swan-Lake-audio.mp3" type="audio/mpeg">
+      </audio>
+      
       <!-- Language Switcher -->
       <div class="language-switcher">
         <button class="lang-btn lang-btn-sq active" onclick="switchLanguage('sq')">SQ</button>
+        <button class="lang-btn lang-btn-de" onclick="switchLanguage('de')">DE</button>
         <button class="lang-btn lang-btn-en" onclick="switchLanguage('en')">EN</button>
         <button class="lang-btn lang-btn-tr" onclick="switchLanguage('tr')">TR</button>
-        <button class="lang-btn lang-btn-de" onclick="switchLanguage('de')">DE</button>
       </div>
       <section class="hero-container" id="hero-container">
         <div class="invitation-section" id="invitation-section">
