@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Starte Audio (Swan Lake bis 0:44)
         const audio = document.getElementById('swan-audio');
         if (audio) {
-          audio.currentTime = 0;
+          audio.currentTime = 3; // Starte bei Sekunde 3
           audio.volume = 0.3; // 30% Lautstärke
           audio.play().catch(e => console.log('Audio play failed:', e));
           
