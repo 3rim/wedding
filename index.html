@@ -51,11 +51,19 @@
 
     <!-- Main Content: Wird nach Klick sichtbar -->
     <main id="main" class="site-main" tabindex="-1" aria-label="Einladung" style="display: none;">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn lang-btn-sq active" onclick="switchLanguage('sq')">SQ</button>
+        <button class="lang-btn lang-btn-en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn lang-btn-tr" onclick="switchLanguage('tr')">TR</button>
+        <button class="lang-btn lang-btn-de" onclick="switchLanguage('de')">DE</button>
+      </div>
       <section class="hero-container" id="hero-container">
         <div class="invitation-section" id="invitation-section">
           <div class="invitation-content">
-            <img src="assets/Hochzeitsladung.svg" alt="Hochzeitseinladung" class="kranz-with-title-svg">
-            
+            <div class="invitation-image-wrapper">
+              <img src="assets/Hochzeitsladung-sq.svg" alt="Hochzeitseinladung" class="kranz-with-title-svg" id="invitation-image">
+            </div>
           </div>
 
           <!-- Scroll-Down-Pfeil -->
@@ -96,4 +104,95 @@
     </main>
 
     </body>
+    <script>
+      const translations = {
+            sq: {
+                dataTitle: "Data & Ora",
+                dataText1: "E shtunë, 20 qershor 2026",
+                dataText2: "Hyrja nga ora 18:00",
+                locationTitle: "Restoranti & Lokacioni",
+                locationText: "Fish House Delfin",
+                image: "assets/Hochzeitsladung-sq.svg"
+            },
+            en: {
+                dataTitle: "Date & Time",
+                dataText1: "Saturday, June 20, 2026",
+                dataText2: "Entrance from 18:00",
+                locationTitle: "Restaurant & Location",
+                locationText: "Fish House Delfin",
+                image: "assets/Hochzeitsladung-en.svg"
+            },
+            tr: {
+                dataTitle: "Tarih & Saat",
+                dataText1: "Cumartesi, 20 Haziran 2026",
+                dataText2: "Giriş saat 18:00'den itibaren",
+                locationTitle: "Restoran & Konum",
+                locationText: "Fish House Delfin",
+                image: "assets/Hochzeitsladung-tr.svg"
+            },
+            de: {
+                dataTitle: "Datum & Uhrzeit",
+                dataText1: "Samstag, 20. Juni 2026",
+                dataText2: "Einlass ab 18:00 Uhr",
+                locationTitle: "Restaurant & Location",
+                locationText: "Fish House Delfin",
+                image: "assets/Hochzeitsladung-de.svg"
+            }
+        };
+
+        let currentLang = 'sq';
+
+        // Sprache wechseln
+        function switchLanguage(lang) {
+            currentLang = lang;
+            updateTexts();
+            updateButtonStates();
+        }
+
+        // Button-Zustände aktualisieren
+        function updateButtonStates() {
+            document.querySelector('.lang-btn-sq').classList.toggle('active', currentLang === 'sq');
+            document.querySelector('.lang-btn-en').classList.toggle('active', currentLang === 'en');
+            document.querySelector('.lang-btn-tr').classList.toggle('active', currentLang === 'tr');
+            document.querySelector('.lang-btn-de').classList.toggle('active', currentLang === 'de');
+        }
+
+        // Texte und Bild aktualisieren
+        function updateTexts() {
+            const t = translations[currentLang];
+            
+            // Cards aktualisieren
+            const cards = document.querySelectorAll('.details .card');
+            if (cards.length >= 2) {
+                const dateCard = cards[0];
+                dateCard.querySelector('h2').textContent = t.dataTitle;
+                const dateParagraphs = dateCard.querySelectorAll('p');
+                if (dateParagraphs.length >= 2) {
+                    dateParagraphs[0].textContent = t.dataText1;
+                    dateParagraphs[1].textContent = t.dataText2;
+                }
+                
+                const locationCard = cards[1];
+                locationCard.querySelector('h2').textContent = t.locationTitle;
+                const locationP = locationCard.querySelector('p');
+                if (locationP) {
+                    locationP.textContent = t.locationText;
+                }
+            }
+            
+            // Bild mit Fade-Animation wechseln
+            const img = document.getElementById('invitation-image');
+            if (img && img.src !== t.image) {
+                img.classList.add('fade-out');
+                setTimeout(() => {
+                    img.src = t.image;
+                    img.classList.remove('fade-out');
+                    img.classList.add('fade-in');
+                    setTimeout(() => {
+                        img.classList.remove('fade-in');
+                    }, 300);
+                }, 300);
+            }
+        }
+    </script>
 </html>

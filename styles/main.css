@@ -148,12 +148,34 @@ h1, .pill {
   position: relative;
 }
 
+.invitation-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .kranz-with-title-svg {
   width: auto;
   max-width: 95%;
   height: 95%;
   object-fit: contain;
   object-position: center;
+  transition: opacity 0.3s ease;
+}
+
+.kranz-with-title-svg.fade-out {
+  opacity: 0;
+}
+
+.kranz-with-title-svg.fade-in {
+  animation: fadeInSvg 0.3s ease;
+}
+
+@keyframes fadeInSvg {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .invitation-text {
@@ -266,6 +288,7 @@ section h2 {
 
 .site-main {
   opacity: 1;
+  position: relative;
 }
 
 .site-main:focus:not(:focus-visible) {
@@ -275,6 +298,56 @@ section h2 {
 .site-main:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 4px;
+}
+
+/* Language Switcher - oben links im Main Content */
+.language-switcher {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Sichtbar nachdem Envelope geöffnet wurde */
+.site-main[style*="block"] .language-switcher,
+.site-main:not([style*="none"]) .language-switcher {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+  display: inline-block;
+  width: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lang-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: white;
 }
 
 /* —— Vollbild-Einladung: zwei Klappen + Siegel (Referenz: gold/beige Karte) —— */
