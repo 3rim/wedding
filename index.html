@@ -83,12 +83,37 @@
       <section class="details" id="details">
         <div class="grid">
           <article class="card">
-            <h2>Data &amp; Ora</h2>
-            <p>E shtunë, 20 qershor 2026</p>
-            <p>Pritja e mysafirëve bëhet prej orës <br>18:30 deri 19:30</p>
-            <p>20:00 hyrja e çiftit </p>
-            <p>Ju mirëpresim!</p>
-
+            <h2 id="data-title">Data &amp; Ora</h2>
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+              </span>
+              <span class="detail-text" id="data-text1">E shtunë, 20 qershor 2026</span>
+            </div>
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+              </span>
+              <span class="detail-text" id="data-text2">Pritja e mysafirëve nga ora 18:30 deri 19:30</span>
+            </div>
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">
+                <img src="assets/paar.png" alt="" class="detail-icon__img" />
+              </span>
+              <span class="detail-text" id="data-text3">Hyrja e çiftit në orën 20:00</span>
+            </div>
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.03.25.05.5.08.74a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.48-1.48a2 2 0 0 1 2.11-.45c.24.03.49.05.73.08A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span class="detail-text" id="data-text4">Na konfirmoni ardhjen tuaj +38971836910</span>
+            </div>
+            <div class="detail-line">
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a4.5 4.5 0 0 0-6.4 0L12 6.9l-2.4-2.3a4.5 4.5 0 1 0-6.4 6.4l2.3 2.4L12 21.3l6.5-6.5 2.3-2.4a4.5 4.5 0 0 0 0-6.4z"/></svg>
+              </span>
+              <span class="detail-text" id="data-text5">Ju mirëpresim!</span>
+            </div>
           </article>
           <article class="card">
             <h2>Restoranti &amp; Lokacioni</h2>
@@ -117,7 +142,10 @@
             sq: {
                 dataTitle: "Data & Ora",
                 dataText1: "E shtunë, 20 qershor 2026",
-                dataText2: "Hyrja nga ora 18:00",
+                dataText2: "Pritja e mysafirëve nga ora 18:30 deri 19:30",
+                dataText3: "Hyrja e çiftit në orën 20:00",
+                dataText4: "Na konfirmoni ardhjen tuaj +38971836910",
+                dataText5: "Ju mirëpresim!",
                 locationTitle: "Restoranti & Lokacioni",
                 locationText: "Fish House Delfin",
                 image: "assets/Hochzeitsladung-sq.svg"
@@ -125,7 +153,10 @@
             en: {
                 dataTitle: "Date & Time",
                 dataText1: "Saturday, June 20, 2026",
-                dataText2: "Entrance from 18:00",
+                dataText2: "Guest reception from 18:30 to 19:30",
+                dataText3: "Couple entrance at 20:00",
+                dataText4: "Please confirm your attendance +38971836910",
+                dataText5: "We look forward to welcoming you!",
                 locationTitle: "Restaurant & Location",
                 locationText: "Fish House Delfin",
                 image: "assets/Hochzeitsladung-en.svg"
@@ -133,7 +164,10 @@
             tr: {
                 dataTitle: "Tarih & Saat",
                 dataText1: "Cumartesi, 20 Haziran 2026",
-                dataText2: "Giriş saat 18:00'den itibaren",
+                dataText2: "Misafir kabulü 18:30'dan 19:30'a kadar",
+                dataText3: "Çiftin girişi 20:00'de",
+                dataText4: "Lütfen katılımınızı onaylayın +38971836910",
+                dataText5: "Sizi bekliyoruz!",
                 locationTitle: "Restoran & Konum",
                 locationText: "Fish House Delfin",
                 image: "assets/Hochzeitsladung-tr.svg"
@@ -141,7 +175,10 @@
             de: {
                 dataTitle: "Datum & Uhrzeit",
                 dataText1: "Samstag, 20. Juni 2026",
-                dataText2: "Einlass ab 18:00 Uhr",
+                dataText2: "Empfang der Gäste von 18:30 bis 19:30 Uhr",
+                dataText3: "Einlass des Brautpaares um 20:00 Uhr",
+                dataText4: "Bitte bestätigt Eure Teilnahme +38971836910",
+                dataText5: "Wir freuen uns auf Euch!",
                 locationTitle: "Restaurant & Location",
                 locationText: "Fish House Delfin",
                 image: "assets/Hochzeitsladung-de.svg"
@@ -174,11 +211,11 @@
             if (cards.length >= 2) {
                 const dateCard = cards[0];
                 dateCard.querySelector('h2').textContent = t.dataTitle;
-                const dateParagraphs = dateCard.querySelectorAll('p');
-                if (dateParagraphs.length >= 2) {
-                    dateParagraphs[0].textContent = t.dataText1;
-                    dateParagraphs[1].textContent = t.dataText2;
-                }
+                dateCard.querySelector('#data-text1').textContent = t.dataText1;
+                dateCard.querySelector('#data-text2').textContent = t.dataText2;
+                dateCard.querySelector('#data-text3').textContent = t.dataText3;
+                dateCard.querySelector('#data-text4').textContent = t.dataText4;
+                dateCard.querySelector('#data-text5').textContent = t.dataText5;
                 
                 const locationCard = cards[1];
                 locationCard.querySelector('h2').textContent = t.locationTitle;

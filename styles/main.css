@@ -282,8 +282,45 @@ section h2 {
   color: var(--primary);
 }
 
-.details .card {
+...details .card {
   text-align: left;
+}
+
+.details .detail-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 0.9rem;
+  color: #444;
+}
+
+.detail-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  color: var(--dark);
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+}
+
+.detail-text {
+  display: block;
+  text-align: left;
+}
+
+.detail-icon svg,
+.detail-icon img {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: contain;
+}
+
+.detail-text {
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .site-main {
