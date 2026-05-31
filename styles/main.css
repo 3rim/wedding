@@ -773,6 +773,10 @@ body .invitation-envelope.is-done {
   text-align: center;               /* optional zentrieren */
 }
 
+.details .detail-text {
+  font-style: italic;
+}
+
 /* Optional: Überschrift etwas kleiner und elegant */
 .details h2, .location h2 {
   font-family: 'Playfair Display', serif;
